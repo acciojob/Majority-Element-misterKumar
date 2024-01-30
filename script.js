@@ -1,4 +1,3 @@
-//your code here
   
 function findMajorityElement(arr){
   let candidate;
