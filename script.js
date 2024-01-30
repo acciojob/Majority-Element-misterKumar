@@ -1,39 +1,22 @@
-  
-function findMajorityElement(arr){
-  let candidate;
-  let count = 0;
-
+ function majorityElementChecker(arr)
+    {
+        let map = new Map();
  
-  for (const num of arr) {
-    if (count === 0) {
-      candidate = num;
+        for(let i = 0; i < arr.length; i++) {
+            if (map.has(arr[i])) {
+                    let count = map.get(arr[i]) +1;
+                    if (count > arr.length /2) {
+                      //  document.write("Majority found :- " + arr[i]);
+                        return arr[i];
+                    } else
+                        map.set(arr[i], count);
+ 
+            }
+            else
+                map.set(arr[i],1);
+            }
+            return 1;
+            //document.write(" No Majority element");
     }
 
-    if (num === candidate) {
-      count++;
-    } else {
-      count--;
-    }
-  }
-
-
-  count = 0;
-  for (const num of arr) {
-    if (num === candidate) {
-      count++;
-    }
-  }
-
-  if (count > arr.length / 2) {
-    return candidate;
-  } else {
-   
-   
-    return -1; 
-  }
-}
-
-
-const inputArray = [2, 1, 2];
-const majorityElement = findMajorityElement(inputArray);
-console.log(majorityElement); 
+module.exports = majorityElementChecker;
